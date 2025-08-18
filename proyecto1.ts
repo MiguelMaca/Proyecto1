@@ -102,4 +102,43 @@ class BTreeNode {
         this.proveedores.splice(i, 0, valorMedio);
     }
 }
+class BTree {
+    raiz: BTreeNode | null = null;
+    t: number;
+
+    constructor(t: number) {
+        this.t = t;
+    }
+
+    insertar(proveedor: Proveedor) {
+        if (!this.raiz) {
+            this.raiz = new BTreeNode(this.t, true);
+            this.raiz.proveedores.push(proveedor);
+        } else {
+            if (this.raiz.proveedores.length === (2 * this.t - 1)) {
+                const nuevaRaiz = new BTreeNode(this.t, false);
+                nuevaRaiz.hijos.push(this.raiz);
+                nuevaRaiz.dividirHijo(0, this.raiz);
+                let i = 0;
+                if (nuevaRaiz.proveedores[0].id < proveedor.id) {
+                    i++;
+                }
+                nuevaRaiz.hijos[i].insertarNoLleno(proveedor);
+                this.raiz = nuevaRaiz;
+            } else {
+                this.raiz.insertarNoLleno(proveedor);
+            }
+        }
+    }
+
+    recorrer(): Proveedor[] {
+        return this.raiz ? this.raiz.recorrer() : [];
+    }
+
+    buscarPorServicio(servicio: string): Proveedor[] {
+        return this.raiz ? this.raiz.buscarPorServicio(servicio) : [];
+    }
+}
+
+
 
