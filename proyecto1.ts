@@ -141,4 +141,49 @@ class BTree {
 }
 
 
+// ---------------- PRUEBAS AUTOMÁTICAS ----------------
+const arbol = new BTree(2);
+
+// Insertamos proveedores de ejemplo
+const proveedores: Proveedor[] = [
+    { id: 5, nombre: "Juan Pérez", servicio: "electricista", calificacion: 4 },
+    { id: 3, nombre: "Ana Gómez", servicio: "carpintero", calificacion: 5 },
+    { id: 8, nombre: "Luis Martínez", servicio: "plomero", calificacion: 3 },
+    { id: 1, nombre: "Marta López", servicio: "electricista", calificacion: 5 },
+    { id: 10, nombre: "Pedro Ruiz", servicio: "programador", calificacion: 4 },
+    { id: 6, nombre: "Lucía Torres", servicio: "diseñador", calificacion: 5 },
+    { id: 4, nombre: "Carlos Méndez", servicio: "plomero", calificacion: 2 },
+    { id: 7, nombre: "José Díaz", servicio: "electricista", calificacion: 3 },
+    { id: 2, nombre: "Sofía Castillo", servicio: "carpintero", calificacion: 4 },
+    { id: 9, nombre: "Diego Herrera", servicio: "programador", calificacion: 5 },
+];
+
+proveedores.forEach(p => arbol.insertar(p));
+
+// Listar todos
+console.log("\n📋 Lista de proveedores (ordenados por ID):");
+arbol.recorrer().forEach(p => {
+    console.log(${p.id} - ${p.nombre} - ${p.servicio} - ${p.calificacion}★);
+});
+
+// Búsqueda por servicio
+const servicioBuscar = "carpintero";
+console.log(\n🔍 Proveedores de servicio: ${servicioBuscar});
+const resultados = arbol.buscarPorServicio(servicioBuscar);
+if (resultados.length === 0) {
+    console.log("No se encontraron proveedores.");
+} else {
+    resultados.forEach(p => {
+        console.log(${p.id} - ${p.nombre} - ${p.servicio} - ${p.calificacion}★);
+    });
+}
+
+// Listar ordenado por calificación (descendente)
+console.log("\n⭐ Lista de proveedores ordenados por calificación:");
+arbol.recorrer()
+    .sort((a, b) => b.calificacion - a.calificacion)
+    .forEach(p => {
+        console.log(${p.id} - ${p.nombre} - ${p.servicio} - ${p.calificacion}★);
+    });
+
 
