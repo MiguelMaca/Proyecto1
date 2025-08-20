@@ -163,18 +163,18 @@ proveedores.forEach(p => arbol.insertar(p));
 // Listar todos
 console.log("\n📋 Lista de proveedores (ordenados por ID):");
 arbol.recorrer().forEach(p => {
-    console.log(${p.id} - ${p.nombre} - ${p.servicio} - ${p.calificacion}★);
+    console.log(`${p.id} - ${p.nombre} - ${p.servicio} - ${p.calificacion}★`);
 });
 
 // Búsqueda por servicio
 const servicioBuscar = "carpintero";
-console.log(\n🔍 Proveedores de servicio: ${servicioBuscar});
+console.log(`\n🔍 Proveedores de servicio: ${servicioBuscar}`);
 const resultados = arbol.buscarPorServicio(servicioBuscar);
 if (resultados.length === 0) {
     console.log("No se encontraron proveedores.");
 } else {
     resultados.forEach(p => {
-        console.log(${p.id} - ${p.nombre} - ${p.servicio} - ${p.calificacion}★);
+        console.log(`${p.id} - ${p.nombre} - ${p.servicio} - ${p.calificacion}★`);
     });
 }
 
@@ -183,7 +183,7 @@ console.log("\n⭐ Lista de proveedores ordenados por calificación:");
 arbol.recorrer()
     .sort((a, b) => b.calificacion - a.calificacion)
     .forEach(p => {
-        console.log(${p.id} - ${p.nombre} - ${p.servicio} - ${p.calificacion}★);
+        console.log(`${p.id} - ${p.nombre} - ${p.servicio} - ${p.calificacion}★`);
     });
 
 
