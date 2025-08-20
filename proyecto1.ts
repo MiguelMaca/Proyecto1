@@ -1,4 +1,4 @@
-//Proyecto 1 - Estructura de Datos 1
+//Proyecto 1 - Estructura de Datos 2
 //Miguel Macario
 //Jason Gutierrez
 //Abel de Leon
