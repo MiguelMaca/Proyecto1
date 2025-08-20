@@ -24,15 +24,16 @@ calificaciom: puntuacion de 1 a 5 estrellas
 /////////////// PARTES IMPORTANTES ///////////////////
 
 en esta parte definiomos que datos tiene cada proveedor dentro del sistema
-interface Proveedor {
+
+    interface Proveedor {
     id: number;
     nombre: string;
     servicio: string;
     calificacion: number;
 }
 
-
 este metodo permite recorrer el arbol de izquierda a derecha devolviendo la lista de proveedores ordenados por su ID
+
     recorrer(): Proveedor[] {
         let resultado: Proveedor[] = [];
         let i: number;
@@ -49,6 +50,7 @@ este metodo permite recorrer el arbol de izquierda a derecha devolviendo la list
     }
 
 Con este metodo podemos buscar proveedores que tengan un servicio especifico
+
     buscarPorServicio(servicio: string): Proveedor[] {
         let resultados: Proveedor[] = [];
         for (let prov of this.proveedores) {
@@ -67,6 +69,7 @@ Con este metodo podemos buscar proveedores que tengan un servicio especifico
 
 este seria el corazon del arbol B, que inserta nuevos proveedores y divide los nodos cuando se llenan 
 esto garantiza que el arbol nunca pierda sui estructura balanceada 
+
     insertarNoLleno(proveedor: Proveedor) {
         let i = this.proveedores.length - 1;
         if (this.esHoja) {
